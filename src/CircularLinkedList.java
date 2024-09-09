@@ -1,10 +1,10 @@
-public class CircularLinkedList<Object>
+public class CircularLinkedList<T>
 {
     class Node
     {
-        Object data;
+        T data;
         Node next;
-        Node(Object data)
+        Node(T data)
         {
             this.data=data;
             this.next=null;
@@ -13,7 +13,7 @@ public class CircularLinkedList<Object>
     Node head;
     Node tail;
 
-    public void insertAtBeginning(Object data)
+    public void insertAtBeginning(T data)
     {
         Node n=new Node(data);
         if(head==null)
@@ -27,7 +27,7 @@ public class CircularLinkedList<Object>
         tail.next=head;
     }
 
-    public void insertAtEnd(Object data)
+    public void insertAtEnd(T data)
     {
         Node n=new Node(data);
         if(head==null)
@@ -40,7 +40,7 @@ public class CircularLinkedList<Object>
         tail=n;
     }
 
-    public void insert(Object data, int index)
+    public void insert(T data, int index)
     {
         Node n=new Node(data);
         if(index==0)
@@ -68,11 +68,11 @@ public class CircularLinkedList<Object>
             System.out.println("Index out of Range!!");
     }
 
-    public Object deleteFirst()
+    public T deleteFirst()
     {
         if(head==null)
-            return (Object) "List is Empty!!";
-        Object data=head.data;
+            return (T) "List is Empty!!";
+        T data=head.data;
         Node temp=head.next;
         head.next=null;
         head=temp;
@@ -80,22 +80,22 @@ public class CircularLinkedList<Object>
         return data;
     }
 
-    public Object deleteLast()
+    public T deleteLast()
     {
         if(head==null)
-            return (Object) "List is Empty!!";
+            return (T) "List is Empty!!";
         Node temp=head;
         while(temp.next!=tail)
         {
             temp=temp.next;
         }
-        Object data=tail.data;
+        T data=tail.data;
         temp.next=head;
         tail=temp;
         return data;
     }
 
-    public Object delete(Object data)
+    public T delete(T data)
     {
         if(head.data.equals(data))
         {
@@ -114,14 +114,14 @@ public class CircularLinkedList<Object>
             prev=temp;
             temp=temp.next;
         }
-        Object var=temp.data;
+        T var=temp.data;
         if(temp.next!=head)
         {
             prev.next=temp.next;
             temp.next=null;
         }
         else
-            return (Object) (data+" is not present inside linked list");
+            return (T) (data+" is not present inside linked list");
         return var;
     }
 
