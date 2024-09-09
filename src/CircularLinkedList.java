@@ -95,6 +95,94 @@ public class CircularLinkedList<Object>
         return data;
     }
 
+    public Object delete(Object data)
+    {
+        if(head.data.equals(data))
+        {
+            return deleteFirst();
+        }
+        else if(tail.data.equals(data))
+        {
+            return deleteLast();
+        }
+        Node temp=head.next;
+        Node prev=head;
+        while(temp.next!=head)
+        {
+            if(temp.data.equals(data))
+                break;
+            prev=temp;
+            temp=temp.next;
+        }
+        Object var=temp.data;
+        if(temp.next!=head)
+        {
+            prev.next=temp.next;
+            temp.next=null;
+        }
+        else
+            return (Object) (data+" is not present inside linked list");
+        return var;
+    }
+
+    public void display()
+    {
+        if(head==null)
+            return;
+        System.out.println(head.data);
+        display(head.next);
+    }
+
+    public void display(Node start)
+    {
+        if(start==head)
+        {
+            return;
+        }
+        System.out.println(start.data);
+        display(start.next);
+    }
+
+    public void displayReverse()
+    {
+        if(head==null)
+            return;
+        displayReverse(head);
+    }
+
+    public void displayReverse(Node start)
+    {
+        if(start.next!=head)
+            displayReverse(start.next);
+        System.out.println(start.data);
+    }
+
+    public boolean isEmpty()
+    {
+        if(head==null)
+            return true;
+        return false;
+    }
+
+    public void clear()
+    {
+        head=tail=null;
+    }
+
+    public int size()
+    {
+        return size(head);
+    }
+
+    public int size(Node start)
+    {
+        if(start==null)
+            return 0;
+        if(start==tail)
+            return 1;
+        return 1+size(start.next);
+    }
+
     @Override
     public String toString()
     {

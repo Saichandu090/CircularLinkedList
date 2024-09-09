@@ -4,6 +4,9 @@ public class MainCircular
     {
 
         CircularLinkedList<Integer> cl=new CircularLinkedList<Integer>();
+        cl.display();
+        System.out.println("Size is : "+cl.size());
+        System.out.println(cl.isEmpty());
         System.out.println(cl);
         System.out.println(cl.deleteLast());
         System.out.println(cl.deleteFirst());
@@ -15,8 +18,14 @@ public class MainCircular
         cl.insertAtEnd(8960);
         cl.insert(456,6); //Need to work on this
         System.out.println(cl);
-        System.out.println(cl.delete(4));
+        System.out.println(cl.delete(10));
         System.out.println(cl);
+        System.out.println("Size is : "+cl.size());
+        cl.display();
+        System.out.println("=====");
+        cl.displayReverse();
+        System.out.println("Size is : "+cl.size());
+        System.out.println(cl.isEmpty());
 
     }
 }
